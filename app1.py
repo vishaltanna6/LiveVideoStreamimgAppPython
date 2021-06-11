@@ -2,8 +2,8 @@ import cv2, socket, pickle, os,threading
 def send():
     s=socket.socket(socket.AF_INET , socket.SOCK_DGRAM)
     s.setsockopt(socket.SOL_SOCKET, socket.SO_SNDBUF, 10000000)
-    serverip="192.168.0.109"
-    serverport=3050
+    serverip="192.168.0.109"    #server IP
+    serverport=3050             #server Port
     cap = cv2.VideoCapture(0)
     while True:
         ret,photo = cap.read()            
@@ -21,8 +21,8 @@ def send():
 
 def recv():
     sr=socket.socket(socket.AF_INET , socket.SOCK_DGRAM)
-    ip="192.168.0.109"
-    port=3000
+    ip="192.168.0.109"      #host IP 
+    port=3000               #host Port
     sr.bind((ip,port))
     
     while True:
