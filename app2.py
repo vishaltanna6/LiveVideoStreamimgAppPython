@@ -8,8 +8,8 @@ def send():
     while True:
         ret,photo = cap.read()            
         ret, buffer = cv2.imencode(".jpg", photo, [int(cv2.IMWRITE_JPEG_QUALITY),30])
-        x_as_bytes = pickle.dumps(buffer)
-        s.sendto(x_as_bytes,(serverip , serverport))
+        img_bytes = pickle.dumps(buffer)
+        s.sendto(img_bytes,(serverip , serverport))
         cv2.namedWindow('2_send', cv2.WINDOW_NORMAL)
         cv2.resizeWindow('2_send', 180,180)
         cv2.imshow('2_send', photo)
